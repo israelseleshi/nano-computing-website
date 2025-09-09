@@ -26,13 +26,27 @@ import {
   Github,
   Globe
 } from 'lucide-react';
-import { EnhancedTeamMember, TeamMemberForm, TeamMemberSkill } from '../../types/admin';
+import { 
+  TeamMemberSkill, 
+  EnhancedTeamMember 
+} from '../../types/admin';
+import { EmailAddress, Rating } from '../../types';
 
-interface TeamManagementProps {
-  onBack: () => void;
+interface TeamMemberForm {
+  name: string;
+  position: string;
+  department: string;
+  bio: string;
+  avatar: string;
+  email: string;
+  phone: string;
+  socialLinks: Record<string, string>;
+  skills: any[];
+  experience: number;
+  isVisible: boolean;
 }
 
-export function TeamManagement({ onBack }: TeamManagementProps) {
+export function TeamManagement() {
   const [activeTab, setActiveTab] = useState('members');
   const [selectedMember, setSelectedMember] = useState<EnhancedTeamMember | null>(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -142,7 +156,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
       email: member.email,
       phone: member.phone || '',
       socialLinks: member.socialLinks,
-      skills: member.skills.map(skill => ({
+      skills: member.skills.map((skill: TeamMemberSkill) => ({
         name: skill.name,
         level: skill.level,
         category: skill.category
@@ -160,7 +174,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
     if (selectedMember) {
       setTeamMembers(prev => prev.map(member => 
         member.id === selectedMember.id 
-          ? { ...member, ...memberForm, updatedAt: new Date() } as EnhancedTeamMember
+          ? { ...member, ...memberForm, email: memberForm.email as EmailAddress, updatedAt: new Date() } as EnhancedTeamMember
           : member
       ));
     } else {
@@ -168,7 +182,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
       const newMember: EnhancedTeamMember = {
         id: `member-${Date.now()}` as any,
         ...memberForm,
-        email: memberForm.email as any,
+        email: memberForm.email as EmailAddress,
         skills: memberForm.skills.map((skill: any) => ({
           id: `skill-${Date.now()}-${skill.name}`,
           ...skill,
@@ -179,7 +193,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
         performance: {
           memberId: `member-${Date.now()}` as any,
           projectsCompleted: 0,
-          clientSatisfaction: 0 as any,
+          clientSatisfaction: 0 as Rating,
           responseTime: 0,
           expertise: [],
           certifications: [],
@@ -201,7 +215,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
       const index = prev.findIndex(m => m.id === id);
       if (index > 0) {
         const newMembers = [...prev];
-        [newMembers[index], newMembers[index - 1]] = [newMembers[index - 1], newMembers[index]];
+        [newMembers[index], newMembers[index - 1]] = [newMembers[index - 1], newMembers[index]] as [EnhancedTeamMember, EnhancedTeamMember];
         return newMembers.map((member, i) => ({ ...member, order: i + 1 }));
       }
       return prev;
@@ -213,7 +227,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
       const index = prev.findIndex(m => m.id === id);
       if (index < prev.length - 1) {
         const newMembers = [...prev];
-        [newMembers[index], newMembers[index + 1]] = [newMembers[index + 1], newMembers[index]];
+        [newMembers[index], newMembers[index + 1]] = [newMembers[index + 1], newMembers[index]] as [EnhancedTeamMember, EnhancedTeamMember];
         return newMembers.map((member, i) => ({ ...member, order: i + 1 }));
       }
       return prev;
@@ -346,7 +360,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
                 <div>
                   <label className="text-sm font-medium mb-2 block">LinkedIn</label>
                   <Input
-                    value={memberForm.socialLinks.linkedin || ''}
+                    value={memberForm.socialLinks['linkedin'] || ''}
                     onChange={(e) => setMemberForm(prev => ({ 
                       ...prev, 
                       socialLinks: { ...prev.socialLinks, linkedin: e.target.value }
@@ -357,7 +371,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
                 <div>
                   <label className="text-sm font-medium mb-2 block">Twitter</label>
                   <Input
-                    value={memberForm.socialLinks.twitter || ''}
+                    value={memberForm.socialLinks['twitter'] || ''}
                     onChange={(e) => setMemberForm(prev => ({ 
                       ...prev, 
                       socialLinks: { ...prev.socialLinks, twitter: e.target.value }
@@ -368,7 +382,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
                 <div>
                   <label className="text-sm font-medium mb-2 block">GitHub</label>
                   <Input
-                    value={memberForm.socialLinks.github || ''}
+                    value={memberForm.socialLinks['github'] || ''}
                     onChange={(e) => setMemberForm(prev => ({ 
                       ...prev, 
                       socialLinks: { ...prev.socialLinks, github: e.target.value }
@@ -379,7 +393,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
                 <div>
                   <label className="text-sm font-medium mb-2 block">Website</label>
                   <Input
-                    value={memberForm.socialLinks.website || ''}
+                    value={memberForm.socialLinks['website'] || ''}
                     onChange={(e) => setMemberForm(prev => ({ 
                       ...prev, 
                       socialLinks: { ...prev.socialLinks, website: e.target.value }
@@ -488,9 +502,6 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
           <p className="text-muted-foreground mt-2">Manage team members, skills, and performance</p>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="outline" onClick={onBack}>
-            Back to Dashboard
-          </Button>
           <Button onClick={() => setIsEditing(true)} className="bg-gradient-to-r from-primary to-blue-600">
             <Plus className="w-4 h-4 mr-2" />
             Add Member
@@ -614,7 +625,7 @@ export function TeamManagement({ onBack }: TeamManagementProps) {
                             <Linkedin className="w-4 h-4" />
                           </Button>
                         )}
-                        {member.socialLinks.twitter && (
+                        {member.socialLinks['twitter'] && (
                           <Button variant="outline" size="sm">
                             <Twitter className="w-4 h-4" />
                           </Button>

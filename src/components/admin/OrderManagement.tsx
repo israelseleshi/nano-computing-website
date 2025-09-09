@@ -9,10 +9,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { 
   ShoppingCart, 
   Search,
-  MoreVertical,
-  Eye,
-  Edit,
-  Trash2,
   Package,
   Truck,
   Clock,
@@ -21,21 +17,19 @@ import {
   Calendar,
   CheckCircle,
   BarChart3,
-  AlertCircle,
   TrendingUp,
   FileText,
   Download,
   Send,
   Mail,
-  Phone
+  Phone,
+  Eye,
+  Edit
 } from 'lucide-react';
 import { Order, OrderStatus, PaymentStatus, FulfillmentStatus } from '../../types/admin';
 
-interface OrderManagementProps {
-  onBack: () => void;
-}
 
-export function OrderManagement({ onBack }: OrderManagementProps) {
+export function OrderManagement() {
   const [activeTab, setActiveTab] = useState('orders');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('all');
@@ -126,9 +120,6 @@ export function OrderManagement({ onBack }: OrderManagementProps) {
           <p className="text-muted-foreground mt-2">Track and manage customer orders and fulfillment</p>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="outline" onClick={onBack}>
-            Back to Dashboard
-          </Button>
           <Button className="bg-gradient-to-r from-primary to-blue-600">
             <Download className="w-4 h-4 mr-2" />
             Export Orders

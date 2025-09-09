@@ -6,10 +6,9 @@ import { Input } from '../ui/input';
 import { Badge } from '../ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { 
-  Users, 
-  Search, 
-  Eye,
+  Search,
   Edit,
+  Eye,
   Mail,
   Phone,
   MapPin,
@@ -23,15 +22,13 @@ import {
   Crown,
   Clock,
   Target,
-  BarChart3
+  BarChart3,
+  Users
 } from 'lucide-react';
 import { Customer, CustomerInteraction, CustomerSegment } from '../../types/admin';
 
-interface CustomerManagementProps {
-  onBack: () => void;
-}
 
-export function CustomerManagement({ onBack }: CustomerManagementProps) {
+export function CustomerManagement() {
   const [activeTab, setActiveTab] = useState('customers');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSegment, setSelectedSegment] = useState('all');
@@ -151,9 +148,6 @@ export function CustomerManagement({ onBack }: CustomerManagementProps) {
           <p className="text-muted-foreground mt-2">Manage customer relationships and interactions</p>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="outline" onClick={onBack}>
-            Back to Dashboard
-          </Button>
           <Button className="bg-gradient-to-r from-primary to-blue-600">
             <UserPlus className="w-4 h-4 mr-2" />
             Add Customer

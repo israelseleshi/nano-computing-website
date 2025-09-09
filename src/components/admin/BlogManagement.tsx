@@ -27,11 +27,9 @@ import {
 } from 'lucide-react';
 import { EnhancedBlogPost, BlogCategory, BlogPostForm } from '../../types/admin';
 
-interface BlogManagementProps {
-  onBack: () => void;
-}
+interface BlogManagementProps {}
 
-export function BlogManagement({ onBack }: BlogManagementProps) {
+export function BlogManagement({}: BlogManagementProps) {
   const [activeTab, setActiveTab] = useState('posts');
   const [selectedPost, setSelectedPost] = useState<EnhancedBlogPost | null>(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -403,9 +401,6 @@ export function BlogManagement({ onBack }: BlogManagementProps) {
           <p className="text-muted-foreground mt-2">Manage your blog content, categories, and SEO</p>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="outline" onClick={onBack}>
-            Back to Dashboard
-          </Button>
           <Button onClick={handleCreatePost} className="bg-gradient-to-r from-primary to-blue-600">
             <Plus className="w-4 h-4 mr-2" />
             New Article

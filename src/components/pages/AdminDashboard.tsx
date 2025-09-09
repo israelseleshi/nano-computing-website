@@ -414,25 +414,25 @@ export function AdminDashboard({ onLogout, onBackToHome }: AdminDashboardProps) 
                   case 'overview':
                     return renderOverview();
                   case 'shop':
-                    return <ShopManagement onBack={() => setActiveSection('overview')} />;
+                    return <ShopManagement />;
                   case 'blog':
                     console.log('Rendering BlogManagement');
-                    return <BlogManagement onBack={() => setActiveSection('overview')} />;
+                    return <BlogManagement />;
                   case 'team':
                     console.log('Rendering TeamManagement');
-                    return <TeamManagement onBack={() => setActiveSection('overview')} />;
+                    return <TeamManagement />;
                   case 'products':
                     console.log('Rendering ProductManagement');
-                    return <ProductManagement onBack={() => setActiveSection('overview')} />;
+                    return <ProductManagement />;
                   case 'orders':
                     console.log('Rendering OrderManagement');
-                    return <OrderManagement onBack={() => setActiveSection('overview')} />;
+                    return <OrderManagement />;
                   case 'customers':
                     console.log('Rendering CustomerManagement');
-                    return <CustomerManagement onBack={() => setActiveSection('overview')} />;
+                    return <CustomerManagement />;
                   case 'analytics':
                     console.log('Rendering InventoryAnalytics');
-                    return <InventoryAnalytics onBack={() => setActiveSection('overview')} />;
+                    return <InventoryAnalytics />;
                   default:
                     console.log('Unknown section, rendering overview');
                     return renderOverview();

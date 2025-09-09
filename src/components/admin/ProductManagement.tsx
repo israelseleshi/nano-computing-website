@@ -15,13 +15,6 @@ import {
   Eye, 
   Save,
   Search,
-  Filter,
-  AlertTriangle,
-  TrendingUp,
-  DollarSign,
-  BarChart3,
-  Settings,
-  Image,
   Star,
   ShoppingCart,
   Truck,
@@ -29,15 +22,15 @@ import {
   CheckCircle,
   XCircle,
   Clock,
-  Users
+  BarChart3,
+  AlertTriangle,
+  TrendingUp,
+  DollarSign
 } from 'lucide-react';
-import { ProductForm, ProductInventory, Supplier, InventoryAlert } from '../../types/admin';
+import { ProductForm, Supplier, InventoryAlert } from '../../types/admin';
 
-interface ProductManagementProps {
-  onBack: () => void;
-}
 
-export function ProductManagement({ onBack }: ProductManagementProps) {
+export function ProductManagement() {
   const [activeTab, setActiveTab] = useState('products');
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -144,7 +137,7 @@ export function ProductManagement({ onBack }: ProductManagementProps) {
       name: product.name,
       description: product.description,
       price: product.price,
-      compareAtPrice: product.compareAtPrice,
+      compareAtPrice: product.compareAtPrice || 0,
       category: product.category,
       tags: product.tags,
       features: product.features,
@@ -237,7 +230,7 @@ export function ProductManagement({ onBack }: ProductManagementProps) {
                     <Input
                       type="number"
                       value={productForm.compareAtPrice?.toString() || ''}
-                      onChange={(e) => setProductForm(prev => ({ ...prev, compareAtPrice: e.target.value ? Number(e.target.value) : undefined }))}
+                      onChange={(e) => setProductForm(prev => ({ ...prev, compareAtPrice: e.target.value ? Number(e.target.value) : 0 }))}
                     />
                   </div>
                 </div>
@@ -446,9 +439,6 @@ export function ProductManagement({ onBack }: ProductManagementProps) {
           <p className="text-muted-foreground mt-2">Manage inventory, suppliers, and product analytics</p>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="outline" onClick={onBack}>
-            Back to Dashboard
-          </Button>
           <Button onClick={() => setIsEditing(true)} className="bg-gradient-to-r from-primary to-blue-600">
             <Plus className="w-4 h-4 mr-2" />
             New Product
