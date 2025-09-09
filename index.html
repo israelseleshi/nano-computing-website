@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Favicon and app icons -->
+    <link rel="icon" type="image/x-icon" href="/logo.jpg" />
+    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
+    <link rel="shortcut icon" href="/logo.jpg" />
+    <link rel="apple-touch-icon" href="/logo.jpg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.jpg" />
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="/logo.jpg" />
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="/logo.jpg" />
+    <meta name="msapplication-TileImage" content="/logo.jpg" />
+    <meta name="msapplication-TileColor" content="#1d4ed8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nano Computing ICT Solutions - Enterprise Technology Partners</title>
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <link rel="preload" href="/src/styles/critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/src/styles/critical.css"></noscript>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/nano-tech-office-display.mp4" as="video" type="video/mp4" />
+    <link rel="preload" href="/cctv-camera.png" as="image" />
+    <link rel="preload" href="/computer-network.png" as="image" />
+    <link rel="preload" href="/computer-repair.png" as="image" />
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    
+    <!-- Meta tags for SEO and performance -->
+    <meta name="description" content="Elite technology consulting with intelligent solutions, uncompromising security, and seamless innovation. Your integrated safety partner for enterprise transformation." />
+    <meta name="keywords" content="technology consulting, cybersecurity, network infrastructure, cloud migration, enterprise solutions" />
+    <meta name="author" content="Nano Computing ICT Solutions" />
+    
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Nano Computing ICT Solutions - Enterprise Technology Partners" />
+    <meta property="og:description" content="Elite technology consulting with intelligent solutions, uncompromising security, and seamless innovation." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Performance hints -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#1d4ed8" />
+  </head>
+  <body class="bg-background text-foreground" style="position: relative; overflow-x: hidden;">
+    <div id="root" style="position: relative; min-height: 100vh;"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <script>
+      // Load non-critical CSS asynchronously
+      const loadCSS = (href) => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      };
+      
+      // Load after page load
+      window.addEventListener('load', () => {
+        loadCSS('/src/index.css');
+      });
+    </script>
+  </body>
+</html>

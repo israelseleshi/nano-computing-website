@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "json.schemas": [
+    {
+      "fileMatch": ["package.json"],
+      "url": "https://json.schemastore.org/package.json"
+    }
+  ]
+}
