@@ -14,6 +14,7 @@ import { AboutPage } from './components/pages/AboutPage';
 import { ProductDetailPage } from './components/pages/ProductDetailPage';
 import { AuthPage } from './components/pages/AuthPage';
 import { AdminDashboard } from './components/pages/AdminDashboard';
+import { ClientDashboard } from './components/client/ClientDashboard';
 // import { PageType } from './types'; // Unused for now
 
 // Page transition variants - more fluid and distinct
@@ -90,8 +91,8 @@ function NavigationWrapper() {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // Don't show navigation on admin dashboard
-  if (location.pathname === '/admin') {
+  // Don't show navigation on admin or client dashboard
+  if (location.pathname === '/admin' || location.pathname === '/client') {
     return null;
   }
   
@@ -155,10 +156,14 @@ function AppContent(): React.JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
   
-  // Redirect admin users to dashboard after login
+  // Redirect users to appropriate dashboard after login
   useEffect(() => {
-    if (isAuthenticated && user?.role === 'admin' && location.pathname === '/auth') {
-      navigate('/admin');
+    if (isAuthenticated && location.pathname === '/auth') {
+      if (user?.role === 'admin') {
+        navigate('/admin');
+      } else if (user?.email === 'client@nano.com') {
+        navigate('/client');
+      }
     }
   }, [isAuthenticated, user, location.pathname, navigate]);
 
@@ -314,12 +319,21 @@ function AppContent(): React.JSX.Element {
             </ProtectedRoute>
           } />
           
+          <Route path="/client" element={
+            <ClientDashboard 
+              onLogout={() => {
+                logout();
+                navigate('/');
+              }}
+            />
+          } />
+          
           {/* Catch all route - redirect to home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         
-        {/* Enhanced Footer with Premium Animations - Hide for admin dashboard */}
-        {location.pathname !== '/admin' && (
+        {/* Enhanced Footer with Premium Animations - Hide for admin and client dashboard */}
+        {location.pathname !== '/admin' && location.pathname !== '/client' && (
           <motion.footer 
           className="bg-muted/30 border-t border-border/50 relative overflow-hidden"
           initial="hidden"

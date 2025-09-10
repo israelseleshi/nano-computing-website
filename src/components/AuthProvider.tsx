@@ -99,10 +99,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Simulate API call - replace with actual authentication
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      // Check for admin credentials
+      // Check for valid credentials
       const isAdmin = credentials.email === 'admin@nano.com' && credentials.password === 'nano123';
+      const isClient = credentials.email === 'client@nano.com' && credentials.password === 'nano321';
+      const isUser = credentials.email === 'user@nano.com' && credentials.password === 'user123';
       
-      if (!isAdmin && credentials.email !== 'user@nano.com') {
+      if (!isAdmin && !isClient && !isUser) {
         throw new Error('Invalid email or password');
       }
 
@@ -113,6 +115,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         firstName: 'Admin',
         lastName: 'User',
         role: 'admin',
+        createdAt: new Date(),
+        lastLoginAt: new Date()
+      } : isClient ? {
+        id: 'client_001' as UserId,
+        email: credentials.email as EmailAddress,
+        firstName: 'Client',
+        lastName: 'User',
+        role: 'user',
         createdAt: new Date(),
         lastLoginAt: new Date()
       } : {
