@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
@@ -14,7 +14,6 @@ import {
   Search, 
   MessageSquare,
   Calendar,
-  Globe,
   AlertCircle,
   CheckCircle
 } from 'lucide-react';

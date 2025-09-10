@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
@@ -36,7 +36,7 @@ import { ContactDirectory } from './ContactDirectory';
 import { ProfileSettings } from './ProfileSettings';
 import { BillingPayments } from './BillingPayments';
 import { ServiceRequests } from './ServiceRequests';
-import { DocumentCenter } from './DocumentCenter';
+// import { DocumentCenter } from './DocumentCenter'; // Component not found
 import { NotificationsHub } from './NotificationsHub';
 
 interface ClientDashboardProps {
@@ -81,7 +81,7 @@ export function ClientDashboard({ onLogout }: ClientDashboardProps) {
       case 'services':
         return <ServiceRequests />;
       case 'documents':
-        return <DocumentCenter />;
+        return <div className="p-6 text-center"><p>Document Center coming soon...</p></div>;
       case 'notifications':
         return <NotificationsHub />;
       default:

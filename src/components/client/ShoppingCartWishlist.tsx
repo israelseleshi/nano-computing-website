@@ -167,11 +167,11 @@ export function ShoppingCartWishlist() {
     setShowCheckoutModal(true);
     // Simulate checkout process
     setTimeout(() => {
-      setSavingForLater(null);
+      setShowCheckoutModal(false);
       addToast({
         type: 'success',
-        title: 'Item Saved',
-        description: `${cartItems[0].name} saved for later!`
+        title: 'Order Processed',
+        description: `Your order of ${cartItems.length} item${cartItems.length !== 1 ? 's' : ''} has been processed successfully!`
       });
     }, 1000);
   };
