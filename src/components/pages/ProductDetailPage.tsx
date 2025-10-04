@@ -31,8 +31,8 @@ interface ProductDetailPageProps {
 }
 
 export function ProductDetailPage({ productId, onPageChange }: ProductDetailPageProps) {
-  // Extract product ID from the route format "product-{id}"
-  const actualProductId = productId.replace('product-', '');
+  // Use the product ID directly (it's already extracted from the URL params)
+  const actualProductId = productId;
   
   // State for premium interactions
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);

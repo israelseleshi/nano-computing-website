@@ -6,7 +6,6 @@ interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
 }
-
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -16,13 +15,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     if (savedTheme) {
       setTheme(savedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
+    } else {
+      // Default to light theme instead of system preference
+      setTheme('light');
     }
     
-    // Set initial data-theme attribute
+    // Set initial data-theme attribute - always default to light
     const root = document.documentElement;
-    const initialTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const initialTheme = savedTheme || 'light';
     root.setAttribute('data-theme', initialTheme);
   }, []);
 

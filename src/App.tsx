@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation, useParams } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 // import { Sparkles } from 'lucide-react'; // Unused for now
 import { Navigation } from './components/Navigation';
@@ -15,6 +15,8 @@ import { ProductDetailPage } from './components/pages/ProductDetailPage';
 import { AuthPage } from './components/pages/AuthPage';
 import { AdminDashboard } from './components/pages/AdminDashboard';
 import { ClientDashboard } from './components/client/ClientDashboard';
+import { EmployeeDashboard } from './components/employee/EmployeeDashboard';
+import { ManagerDashboard } from './components/employee/ManagerDashboard';
 // import { PageType } from './types'; // Unused for now
 
 // Page transition variants - more fluid and distinct
@@ -150,6 +152,33 @@ function AnimatedPage({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Product Detail Page Wrapper to handle URL params
+function ProductDetailPageWrapper() {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  
+  return (
+    <ProductDetailPage 
+      productId={id || ''} 
+      onPageChange={(page) => {
+        switch (page) {
+          case 'home': navigate('/'); break;
+          case 'about': navigate('/about'); break;
+          case 'services': navigate('/services'); break;
+          case 'hardware': navigate('/hardware'); break;
+          case 'blog': navigate('/blog'); break;
+          case 'contact': navigate('/contact'); break;
+          case 'auth': navigate('/auth'); break;
+          default: 
+            if (page.startsWith('product-')) {
+              navigate(`/product/${page.replace('product-', '')}`);
+            }
+        }
+      }} 
+    />
+  );
+}
+
 function AppContent(): React.JSX.Element {
   const { theme } = useTheme();
   const { user, logout, isAuthenticated } = useAuth();
@@ -163,6 +192,12 @@ function AppContent(): React.JSX.Element {
         navigate('/admin');
       } else if (user?.email === 'client@nano.com') {
         navigate('/client');
+      } else if (user?.email === 'john.doe@nano.com') {
+        navigate('/employee');
+      } else if (user?.email === 'sarah.manager@nano.com') {
+        navigate('/manager');
+      } else if (user?.email === 'admin.system@nano.com') {
+        navigate('/admin');
       }
     }
   }, [isAuthenticated, user, location.pathname, navigate]);
@@ -286,24 +321,7 @@ function AppContent(): React.JSX.Element {
           
           <Route path="/product/:id" element={
             <AnimatedPage>
-              <ProductDetailPage 
-                productId={location.pathname} 
-                onPageChange={(page) => {
-                  switch (page) {
-                    case 'home': navigate('/'); break;
-                    case 'about': navigate('/about'); break;
-                    case 'services': navigate('/services'); break;
-                    case 'hardware': navigate('/hardware'); break;
-                    case 'blog': navigate('/blog'); break;
-                    case 'contact': navigate('/contact'); break;
-                    case 'auth': navigate('/auth'); break;
-                    default: 
-                      if (page.startsWith('product-')) {
-                        navigate(`/product/${page.replace('product-', '')}`);
-                      }
-                  }
-                }} 
-              />
+              <ProductDetailPageWrapper />
             </AnimatedPage>
           } />
           
@@ -328,12 +346,32 @@ function AppContent(): React.JSX.Element {
             />
           } />
           
+          <Route path="/employee" element={
+            <EmployeeDashboard 
+              employeeId="emp_001"
+              onLogout={() => {
+                logout();
+                navigate('/');
+              }}
+            />
+          } />
+          
+          <Route path="/manager" element={
+            <ManagerDashboard 
+              managerId="emp_002"
+              onLogout={() => {
+                logout();
+                navigate('/');
+              }}
+            />
+          } />
+          
           {/* Catch all route - redirect to home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         
-        {/* Enhanced Footer with Premium Animations - Hide for admin and client dashboard */}
-        {location.pathname !== '/admin' && location.pathname !== '/client' && (
+        {/* Enhanced Footer with Premium Animations - Hide for dashboards */}
+        {location.pathname !== '/admin' && location.pathname !== '/client' && location.pathname !== '/employee' && location.pathname !== '/manager' && (
           <motion.footer 
           className="bg-muted/30 border-t border-border/50 relative overflow-hidden"
           initial="hidden"

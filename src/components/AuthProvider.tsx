@@ -59,31 +59,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     error: null
   });
 
-  // Initialize auth state from localStorage
+  // Initialize auth state - always start logged out by default
   useEffect(() => {
     const initializeAuth = () => {
       try {
-        const storedUser = localStorage.getItem('nano_auth_user');
-        const storedToken = localStorage.getItem('nano_auth_token');
+        // Clear any existing authentication data to ensure fresh start
+        localStorage.removeItem('nano_auth_user');
+        localStorage.removeItem('nano_auth_token');
+        localStorage.removeItem('nano_auth_remember');
         
-        if (storedUser && storedToken) {
-          const user = JSON.parse(storedUser) as User;
-          setAuthState({
-            user,
-            isAuthenticated: true,
-            isLoading: false,
-            error: null
-          });
-        } else {
-          setAuthState(prev => ({ ...prev, isLoading: false }));
-        }
+        // Always start with no user logged in
+        setAuthState({
+          user: null,
+          isAuthenticated: false,
+          isLoading: false,
+          error: null
+        });
       } catch (error) {
         console.error('Auth initialization error:', error);
         setAuthState({
           user: null,
           isAuthenticated: false,
           isLoading: false,
-          error: 'Failed to initialize authentication'
+          error: null
         });
       }
     };
@@ -99,12 +97,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Simulate API call - replace with actual authentication
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      // Check for valid credentials
+      // Check for valid credentials (including employee system)
       const isAdmin = credentials.email === 'admin@nano.com' && credentials.password === 'nano123';
       const isClient = credentials.email === 'client@nano.com' && credentials.password === 'nano321';
       const isUser = credentials.email === 'user@nano.com' && credentials.password === 'user123';
       
-      if (!isAdmin && !isClient && !isUser) {
+      // Employee system credentials
+      const isEmployee = credentials.email === 'john.doe@nano.com' && credentials.password === 'employee123';
+      const isManager = credentials.email === 'sarah.manager@nano.com' && credentials.password === 'manager123';
+      const isSystemAdmin = credentials.email === 'admin.system@nano.com' && credentials.password === 'admin123';
+      
+      if (!isAdmin && !isClient && !isUser && !isEmployee && !isManager && !isSystemAdmin) {
         throw new Error('Invalid email or password');
       }
 
@@ -123,6 +126,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         firstName: 'Client',
         lastName: 'User',
         role: 'user',
+        createdAt: new Date(),
+        lastLoginAt: new Date()
+      } : isEmployee ? {
+        id: 'emp_001' as UserId,
+        email: credentials.email as EmailAddress,
+        firstName: 'John',
+        lastName: 'Doe',
+        role: 'user',
+        createdAt: new Date(),
+        lastLoginAt: new Date()
+      } : isManager ? {
+        id: 'emp_002' as UserId,
+        email: credentials.email as EmailAddress,
+        firstName: 'Sarah',
+        lastName: 'Manager',
+        role: 'user',
+        createdAt: new Date(),
+        lastLoginAt: new Date()
+      } : isSystemAdmin ? {
+        id: 'emp_003' as UserId,
+        email: credentials.email as EmailAddress,
+        firstName: 'System',
+        lastName: 'Admin',
+        role: 'admin',
         createdAt: new Date(),
         lastLoginAt: new Date()
       } : {
