@@ -27,7 +27,7 @@ export function usePreloader({ resources, onProgress, onComplete }: UsePreloader
           img.src = resource.url;
           break;
         }
-        
+
         case 'video': {
           const video = document.createElement('video');
           video.oncanplaythrough = () => resolve();
@@ -36,7 +36,7 @@ export function usePreloader({ resources, onProgress, onComplete }: UsePreloader
           video.preload = 'metadata';
           break;
         }
-        
+
         case 'font': {
           const link = document.createElement('link');
           link.rel = 'preload';
@@ -49,7 +49,7 @@ export function usePreloader({ resources, onProgress, onComplete }: UsePreloader
           document.head.appendChild(link);
           break;
         }
-        
+
         case 'script': {
           const script = document.createElement('script');
           script.onload = () => resolve();
@@ -59,7 +59,7 @@ export function usePreloader({ resources, onProgress, onComplete }: UsePreloader
           document.head.appendChild(script);
           break;
         }
-        
+
         case 'style': {
           const link = document.createElement('link');
           link.rel = 'stylesheet';
@@ -69,7 +69,7 @@ export function usePreloader({ resources, onProgress, onComplete }: UsePreloader
           document.head.appendChild(link);
           break;
         }
-        
+
         default:
           reject(new Error(`Unsupported resource type: ${resource.type}`));
       }
@@ -101,7 +101,7 @@ export function usePreloader({ resources, onProgress, onComplete }: UsePreloader
         completed++;
         setLoadedCount(completed);
         onProgress?.(completed, resources.length);
-        
+
         if (completed === resources.length) {
           setErrors(newErrors);
           setIsLoading(false);
@@ -111,9 +111,9 @@ export function usePreloader({ resources, onProgress, onComplete }: UsePreloader
     };
 
     // Load high priority resources first, then medium and low
-    const highPriority = sortedResources.filter(r => r.priority === 'high');
-    const mediumPriority = sortedResources.filter(r => r.priority === 'medium' || !r.priority);
-    const lowPriority = sortedResources.filter(r => r.priority === 'low');
+    const highPriority = sortedResources.filter((r) => r.priority === 'high');
+    const mediumPriority = sortedResources.filter((r) => r.priority === 'medium' || !r.priority);
+    const lowPriority = sortedResources.filter((r) => r.priority === 'low');
 
     // Load high priority resources immediately
     highPriority.forEach(loadResource);
@@ -127,7 +127,6 @@ export function usePreloader({ resources, onProgress, onComplete }: UsePreloader
     setTimeout(() => {
       lowPriority.forEach(loadResource);
     }, 500);
-
   }, [resources, preloadResource, onProgress, onComplete]);
 
   return {

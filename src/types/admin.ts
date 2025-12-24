@@ -381,7 +381,7 @@ export enum OrderStatus {
   SHIPPED = 'shipped',
   DELIVERED = 'delivered',
   CANCELLED = 'cancelled',
-  REFUNDED = 'refunded'
+  REFUNDED = 'refunded',
 }
 
 export enum PaymentStatus {
@@ -389,7 +389,7 @@ export enum PaymentStatus {
   PAID = 'paid',
   FAILED = 'failed',
   REFUNDED = 'refunded',
-  PARTIALLY_REFUNDED = 'partially_refunded'
+  PARTIALLY_REFUNDED = 'partially_refunded',
 }
 
 export enum FulfillmentStatus {
@@ -397,7 +397,7 @@ export enum FulfillmentStatus {
   PARTIAL = 'partial',
   FULFILLED = 'fulfilled',
   SHIPPED = 'shipped',
-  DELIVERED = 'delivered'
+  DELIVERED = 'delivered',
 }
 
 // ============================================================================
@@ -539,7 +539,7 @@ export enum AdminSection {
   PRODUCT_MANAGEMENT = 'products',
   ORDER_MANAGEMENT = 'orders',
   CUSTOMER_MANAGEMENT = 'customers',
-  INVENTORY_ANALYTICS = 'analytics'
+  INVENTORY_ANALYTICS = 'analytics',
 }
 
 export interface AdminNotification {

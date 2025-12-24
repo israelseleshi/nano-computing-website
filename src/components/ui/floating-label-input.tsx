@@ -24,14 +24,14 @@ export function FloatingLabelInput({
       y: '50%',
       scale: 1,
       color: 'hsl(var(--muted-foreground))',
-      opacity: 0.7
+      opacity: 0.7,
     },
     toggled: {
       y: '-100%',
       scale: 0.85,
       color: 'hsl(var(--primary))',
-      opacity: 1
-    }
+      opacity: 1,
+    },
   };
 
   return (
@@ -48,7 +48,7 @@ export function FloatingLabelInput({
       </motion.label>
       <Input
         id={inputId}
-        className={cn("peer", className)}
+        className={cn('peer', className)}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         value={value}

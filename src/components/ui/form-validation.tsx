@@ -24,24 +24,26 @@ export type ValidationError = {
 
 // Validation Functions
 export const validators = {
-  required: (value: string) => !value.trim() ? 'This field is required' : null,
-  
-  minLength: (value: string, min: number) => 
+  required: (value: string) => (!value.trim() ? 'This field is required' : null),
+
+  minLength: (value: string, min: number) =>
     value.length < min ? `Must be at least ${min} characters` : null,
-  
-  maxLength: (value: string, max: number) => 
+
+  maxLength: (value: string, max: number) =>
     value.length > max ? `Must be no more than ${max} characters` : null,
-  
+
   email: (value: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return !emailRegex.test(value) ? 'Please enter a valid email address' : null;
   },
-  
+
   phone: (value: string) => {
     const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-    return !phoneRegex.test(value.replace(/[\s\-\(\)]/g, '')) ? 'Please enter a valid phone number' : null;
+    return !phoneRegex.test(value.replace(/[\s\-\(\)]/g, ''))
+      ? 'Please enter a valid phone number'
+      : null;
   },
-  
+
   url: (value: string) => {
     try {
       new URL(value);
@@ -50,8 +52,8 @@ export const validators = {
       return 'Please enter a valid URL';
     }
   },
-  
-  pattern: (value: string, pattern: RegExp) => 
+
+  pattern: (value: string, pattern: RegExp) =>
     !pattern.test(value) ? 'Please enter a valid format' : null,
 };
 
@@ -60,37 +62,37 @@ export function validateField(value: string, rules: ValidationRule): string | nu
   if (rules.required && !value.trim()) {
     return validators.required(value);
   }
-  
+
   if (!value.trim()) return null; // Skip other validations if empty and not required
-  
+
   if (rules.minLength && validators.minLength(value, rules.minLength)) {
     return validators.minLength(value, rules.minLength);
   }
-  
+
   if (rules.maxLength && validators.maxLength(value, rules.maxLength)) {
     return validators.maxLength(value, rules.maxLength);
   }
-  
+
   if (rules.email && validators.email(value)) {
     return validators.email(value);
   }
-  
+
   if (rules.phone && validators.phone(value)) {
     return validators.phone(value);
   }
-  
+
   if (rules.url && validators.url(value)) {
     return validators.url(value);
   }
-  
+
   if (rules.pattern && validators.pattern(value, rules.pattern)) {
     return validators.pattern(value, rules.pattern);
   }
-  
+
   if (rules.custom) {
     return rules.custom(value);
   }
-  
+
   return null;
 }
 
@@ -124,18 +126,21 @@ export function ValidatedInput({
   const [touched, setTouched] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
 
-  const handleValidation = useCallback((inputValue: string) => {
-    if (!rules) return;
-    
-    const validationError = validateField(inputValue, rules);
-    setLocalError(validationError);
-    onValidation?.(validationError);
-  }, [rules, onValidation]);
+  const handleValidation = useCallback(
+    (inputValue: string) => {
+      if (!rules) return;
+
+      const validationError = validateField(inputValue, rules);
+      setLocalError(validationError);
+      onValidation?.(validationError);
+    },
+    [rules, onValidation]
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     onChange?.(e);
-    
+
     if (touched) {
       handleValidation(newValue);
     }
@@ -150,9 +155,8 @@ export function ValidatedInput({
   const displayError = error || localError;
   const hasError = touched && displayError;
   const hasSuccess = touched && !displayError && success;
-  const inputType = showPasswordToggle && type === 'password' 
-    ? (showPassword ? 'text' : 'password') 
-    : type;
+  const inputType =
+    showPasswordToggle && type === 'password' ? (showPassword ? 'text' : 'password') : type;
 
   return (
     <div className="space-y-2">
@@ -162,7 +166,7 @@ export function ValidatedInput({
           {rules?.required && <span className="text-destructive">*</span>}
         </label>
       )}
-      
+
       <div className="relative">
         <Input
           {...props}
@@ -179,11 +183,10 @@ export function ValidatedInput({
           )}
           aria-invalid={hasError}
           aria-describedby={
-            displayError ? `${props.id}-error` : 
-            helpText ? `${props.id}-help` : undefined
+            displayError ? `${props.id}-error` : helpText ? `${props.id}-help` : undefined
           }
         />
-        
+
         {/* Password Toggle */}
         {showPasswordToggle && type === 'password' && (
           <button
@@ -195,7 +198,7 @@ export function ValidatedInput({
             {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
         )}
-        
+
         {/* Validation Icons */}
         {!showPasswordToggle && (hasError || hasSuccess) && (
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -204,10 +207,10 @@ export function ValidatedInput({
           </div>
         )}
       </div>
-      
+
       {/* Error Message */}
       {hasError && (
-        <div 
+        <div
           id={`${props.id}-error`}
           className="flex items-center gap-2 text-sm text-destructive animate-slide-in-from-top"
         >
@@ -215,7 +218,7 @@ export function ValidatedInput({
           {displayError}
         </div>
       )}
-      
+
       {/* Success Message */}
       {hasSuccess && (
         <div className="flex items-center gap-2 text-sm text-success animate-slide-in-from-top">
@@ -223,13 +226,10 @@ export function ValidatedInput({
           Looks good!
         </div>
       )}
-      
+
       {/* Help Text */}
       {helpText && !hasError && (
-        <p 
-          id={`${props.id}-help`}
-          className="text-xs text-muted-foreground"
-        >
+        <p id={`${props.id}-help`} className="text-xs text-muted-foreground">
           {helpText}
         </p>
       )}
@@ -266,18 +266,21 @@ export function ValidatedTextarea({
   const [touched, setTouched] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
 
-  const handleValidation = useCallback((inputValue: string) => {
-    if (!rules) return;
-    
-    const validationError = validateField(inputValue, rules);
-    setLocalError(validationError);
-    onValidation?.(validationError);
-  }, [rules, onValidation]);
+  const handleValidation = useCallback(
+    (inputValue: string) => {
+      if (!rules) return;
+
+      const validationError = validateField(inputValue, rules);
+      setLocalError(validationError);
+      onValidation?.(validationError);
+    },
+    [rules, onValidation]
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value;
     onChange?.(e);
-    
+
     if (touched) {
       handleValidation(newValue);
     }
@@ -302,7 +305,7 @@ export function ValidatedTextarea({
           {rules?.required && <span className="text-destructive">*</span>}
         </label>
       )}
-      
+
       <div className="relative">
         <Textarea
           {...props}
@@ -318,11 +321,10 @@ export function ValidatedTextarea({
           )}
           aria-invalid={hasError}
           aria-describedby={
-            displayError ? `${props.id}-error` : 
-            helpText ? `${props.id}-help` : undefined
+            displayError ? `${props.id}-error` : helpText ? `${props.id}-help` : undefined
           }
         />
-        
+
         {/* Character Count */}
         {showCharCount && maxLength && (
           <div className="absolute bottom-2 right-2 text-xs text-muted-foreground bg-background/80 px-2 py-1 rounded">
@@ -330,10 +332,10 @@ export function ValidatedTextarea({
           </div>
         )}
       </div>
-      
+
       {/* Error Message */}
       {hasError && (
-        <div 
+        <div
           id={`${props.id}-error`}
           className="flex items-center gap-2 text-sm text-destructive animate-slide-in-from-top"
         >
@@ -341,7 +343,7 @@ export function ValidatedTextarea({
           {displayError}
         </div>
       )}
-      
+
       {/* Success Message */}
       {hasSuccess && (
         <div className="flex items-center gap-2 text-sm text-success animate-slide-in-from-top">
@@ -349,13 +351,10 @@ export function ValidatedTextarea({
           Looks good!
         </div>
       )}
-      
+
       {/* Help Text */}
       {helpText && !hasError && (
-        <p 
-          id={`${props.id}-help`}
-          className="text-xs text-muted-foreground"
-        >
+        <p id={`${props.id}-help`} className="text-xs text-muted-foreground">
           {helpText}
         </p>
       )}
@@ -369,15 +368,20 @@ export function useFormValidation<T extends Record<string, any>>(
   validationRules: Record<keyof T, ValidationRule>
 ) {
   const [values, setValues] = useState<T>(initialValues);
-  const [errors, setErrors] = useState<Record<keyof T, string | null>>({} as Record<keyof T, string | null>);
+  const [errors, setErrors] = useState<Record<keyof T, string | null>>(
+    {} as Record<keyof T, string | null>
+  );
   const [touched, setTouched] = useState<Record<keyof T, boolean>>({} as Record<keyof T, boolean>);
 
-  const validateField = useCallback((field: keyof T, value: string) => {
-    const rule = validationRules[field];
-    if (!rule) return null;
-    
-    return validateField(value, rule);
-  }, [validationRules]);
+  const validateField = useCallback(
+    (field: keyof T, value: string) => {
+      const rule = validationRules[field];
+      if (!rule) return null;
+
+      return validateField(value, rule);
+    },
+    [validationRules]
+  );
 
   const validateForm = useCallback(() => {
     const newErrors: Record<keyof T, string | null> = {} as Record<keyof T, string | null>;
@@ -393,20 +397,26 @@ export function useFormValidation<T extends Record<string, any>>(
     return isValid;
   }, [values, validationRules, validateField]);
 
-  const setValue = useCallback((field: keyof T, value: any) => {
-    setValues(prev => ({ ...prev, [field]: value }));
-    
-    if (touched[field]) {
-      const error = validateField(field, String(value));
-      setErrors(prev => ({ ...prev, [field]: error }));
-    }
-  }, [touched, validateField]);
+  const setValue = useCallback(
+    (field: keyof T, value: any) => {
+      setValues((prev) => ({ ...prev, [field]: value }));
 
-  const setFieldTouched = useCallback((field: keyof T) => {
-    setTouched(prev => ({ ...prev, [field]: true }));
-    const error = validateField(field, String(values[field] || ''));
-    setErrors(prev => ({ ...prev, [field]: error }));
-  }, [values, validateField]);
+      if (touched[field]) {
+        const error = validateField(field, String(value));
+        setErrors((prev) => ({ ...prev, [field]: error }));
+      }
+    },
+    [touched, validateField]
+  );
+
+  const setFieldTouched = useCallback(
+    (field: keyof T) => {
+      setTouched((prev) => ({ ...prev, [field]: true }));
+      const error = validateField(field, String(values[field] || ''));
+      setErrors((prev) => ({ ...prev, [field]: error }));
+    },
+    [values, validateField]
+  );
 
   const reset = useCallback(() => {
     setValues(initialValues);
@@ -422,7 +432,7 @@ export function useFormValidation<T extends Record<string, any>>(
     setFieldTouched,
     validateForm,
     reset,
-    isValid: Object.values(errors).every(error => !error)
+    isValid: Object.values(errors).every((error) => !error),
   };
 }
 
@@ -436,23 +446,26 @@ export function useFormSubmission<T>(
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = useCallback(async (data: T) => {
-    setIsSubmitting(true);
-    setSubmitError(null);
-    setIsSuccess(false);
+  const handleSubmit = useCallback(
+    async (data: T) => {
+      setIsSubmitting(true);
+      setSubmitError(null);
+      setIsSuccess(false);
 
-    try {
-      await onSubmit(data);
-      setIsSuccess(true);
-      onSuccess?.();
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'An error occurred';
-      setSubmitError(errorMessage);
-      onError?.(error instanceof Error ? error : new Error(errorMessage));
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [onSubmit, onSuccess, onError]);
+      try {
+        await onSubmit(data);
+        setIsSuccess(true);
+        onSuccess?.();
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'An error occurred';
+        setSubmitError(errorMessage);
+        onError?.(error instanceof Error ? error : new Error(errorMessage));
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [onSubmit, onSuccess, onError]
+  );
 
   const reset = useCallback(() => {
     setIsSubmitting(false);
@@ -465,6 +478,6 @@ export function useFormSubmission<T>(
     submitError,
     isSuccess,
     handleSubmit,
-    reset
+    reset,
   };
 }

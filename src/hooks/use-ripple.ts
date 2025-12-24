@@ -35,4 +35,3 @@ export function useRipple(ref: React.RefObject<HTMLButtonElement>) {
 
   return ripples;
 }
-

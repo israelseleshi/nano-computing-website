@@ -17,7 +17,7 @@ export function HoverPreview({
   className,
   previewClassName,
   delay = 500,
-  position = 'top'
+  position = 'top',
 }: HoverPreviewProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -29,13 +29,13 @@ export function HoverPreview({
     timeoutRef.current = setTimeout(() => {
       setIsVisible(true);
     }, delay);
-    
+
     if (position === 'follow') {
       const rect = containerRef.current?.getBoundingClientRect();
       if (rect) {
         setMousePos({
           x: e.clientX - rect.left,
-          y: e.clientY - rect.top
+          y: e.clientY - rect.top,
         });
       }
     }
@@ -46,7 +46,7 @@ export function HoverPreview({
       const rect = containerRef.current.getBoundingClientRect();
       setMousePos({
         x: e.clientX - rect.left,
-        y: e.clientY - rect.top
+        y: e.clientY - rect.top,
       });
     }
   };
@@ -61,7 +61,7 @@ export function HoverPreview({
       return {
         left: mousePos.x + 10,
         top: mousePos.y - 10,
-        transform: 'none'
+        transform: 'none',
       } as MotionStyle;
     }
 
@@ -69,35 +69,43 @@ export function HoverPreview({
       top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
       bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
       left: 'right-full top-1/2 -translate-y-1/2 mr-2',
-      right: 'left-full top-1/2 -translate-y-1/2 ml-2'
+      right: 'left-full top-1/2 -translate-y-1/2 ml-2',
     };
 
     return positions[position];
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
-      className={cn("relative inline-block", className)}
+      className={cn('relative inline-block', className)}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       {children}
-      
+
       <AnimatePresence>
         {isVisible && (
           <motion.div
             className={cn(
-              "absolute z-50 pointer-events-none",
+              'absolute z-50 pointer-events-none',
               position !== 'follow' && getPositionStyles(),
               previewClassName
             )}
             {...(position === 'follow' && { style: getPositionStyles() as MotionStyle })}
-            initial={{ opacity: 0, scale: 0.95, y: position === 'top' ? 5 : position === 'bottom' ? -5 : 0 }}
+            initial={{
+              opacity: 0,
+              scale: 0.95,
+              y: position === 'top' ? 5 : position === 'bottom' ? -5 : 0,
+            }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: position === 'top' ? 5 : position === 'bottom' ? -5 : 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            exit={{
+              opacity: 0,
+              scale: 0.95,
+              y: position === 'top' ? 5 : position === 'bottom' ? -5 : 0,
+            }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
           >
             <div className="bg-background/95 backdrop-blur-lg border border-border/50 rounded-lg shadow-2xl p-4 min-w-[200px] max-w-[350px]">
               {preview}
@@ -110,12 +118,12 @@ export function HoverPreview({
 }
 
 // Specialized preview for article cards
-export function ArticleHoverPreview({ 
-  title, 
-  excerpt, 
-  author, 
+export function ArticleHoverPreview({
+  title,
+  excerpt,
+  author,
   readTime,
-  image 
+  image,
 }: {
   title: string;
   excerpt: string;
@@ -125,13 +133,7 @@ export function ArticleHoverPreview({
 }) {
   return (
     <div className="space-y-3">
-      {image && (
-        <img 
-          src={image} 
-          alt={title}
-          className="w-full h-32 object-cover rounded-md"
-        />
-      )}
+      {image && <img src={image} alt={title} className="w-full h-32 object-cover rounded-md" />}
       <div className="space-y-2">
         <h4 className="font-semibold text-sm line-clamp-2">{title}</h4>
         <p className="text-xs text-muted-foreground line-clamp-3">{excerpt}</p>
@@ -152,7 +154,7 @@ export function ProductHoverPreview({
   description,
   price,
   features,
-  inStock
+  inStock,
 }: {
   name: string;
   description: string;
@@ -168,11 +170,13 @@ export function ProductHoverPreview({
         <div className="flex items-center justify-between">
           <span className="text-lg font-bold text-primary">ETB {price.toLocaleString()}</span>
           {inStock !== undefined && (
-            <span className={cn(
-              "text-xs px-2 py-1 rounded-full",
-              inStock ? "bg-green-500/10 text-green-500" : "bg-red-500/10 text-red-500"
-            )}>
-              {inStock ? "In Stock" : "Out of Stock"}
+            <span
+              className={cn(
+                'text-xs px-2 py-1 rounded-full',
+                inStock ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
+              )}
+            >
+              {inStock ? 'In Stock' : 'Out of Stock'}
             </span>
           )}
         </div>

@@ -23,37 +23,37 @@ export function usePerformance() {
 }
 
 // Debounce hook for expensive operations
-export function useDebounce<T extends (...args: any[]) => any>(
-  callback: T,
-  delay: number
-): T {
+export function useDebounce<T extends (...args: any[]) => any>(callback: T, delay: number): T {
   const timeoutRef = useRef<NodeJS.Timeout>();
 
-  return useCallback((...args: Parameters<T>) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    
-    timeoutRef.current = setTimeout(() => {
-      callback(...args);
-    }, delay);
-  }, [callback, delay]) as T;
+  return useCallback(
+    (...args: Parameters<T>) => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      timeoutRef.current = setTimeout(() => {
+        callback(...args);
+      }, delay);
+    },
+    [callback, delay]
+  ) as T;
 }
 
 // Throttle hook for scroll and resize events
-export function useThrottle<T extends (...args: any[]) => any>(
-  callback: T,
-  delay: number
-): T {
+export function useThrottle<T extends (...args: any[]) => any>(callback: T, delay: number): T {
   const lastCallRef = useRef<number>(0);
 
-  return useCallback((...args: Parameters<T>) => {
-    const now = Date.now();
-    if (now - lastCallRef.current >= delay) {
-      lastCallRef.current = now;
-      callback(...args);
-    }
-  }, [callback, delay]) as T;
+  return useCallback(
+    (...args: Parameters<T>) => {
+      const now = Date.now();
+      if (now - lastCallRef.current >= delay) {
+        lastCallRef.current = now;
+        callback(...args);
+      }
+    },
+    [callback, delay]
+  ) as T;
 }
 
 // Memoized expensive calculations
@@ -65,11 +65,12 @@ export function useExpensiveCalculation<T>(
     const start = performance.now();
     const result = calculate();
     const end = performance.now();
-    
-    if (end - start > 16) { // More than one frame
+
+    if (end - start > 16) {
+      // More than one frame
       console.warn(`Expensive calculation took ${(end - start).toFixed(2)}ms`);
     }
-    
+
     return result;
   }, dependencies);
 }

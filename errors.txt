@@ -1,0 +1,220 @@
+
+> website-redesign-for-nano-computing@0.1.0 type-check
+> tsc --noEmit
+
+node_modules/@radix-ui/react-slot/dist/index.d.ts(22,24): error TS2451: Cannot redeclare block-scoped variable 'Slot'.
+node_modules/class-variance-authority/dist/index.d.ts(18,13): error TS2300: Duplicate identifier 'VariantProps'.
+node_modules/class-variance-authority/dist/index.d.ts(35,22): error TS2451: Cannot redeclare block-scoped variable 'cva'.
+node_modules/clsx/clsx.d.ts(2,7): error TS2300: Duplicate identifier 'ClassValue'.
+node_modules/clsx/clsx.d.ts(3,7): error TS2300: Duplicate identifier 'ClassDictionary'.
+node_modules/clsx/clsx.d.ts(4,7): error TS2300: Duplicate identifier 'ClassArray'.
+node_modules/lucide-react/dist/lucide-react.d.ts(1,1): error TS6200: Definitions of the following identifiers conflict with those in another file: LucideIcon, ArrowRight, ArrowLeft, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Star, CheckCircle, X, Menu, Sun, Moon, Eye, Mail, Phone, MapPin, Clock, Calendar, User, Users, Settings, Search, Filter, Download, Upload, Edit, Trash, Plus, Minus, Home, Server, ShoppingCart, BookOpen, Info, Shield, Database, Globe2, Lightbulb, Monitor, Sparkles
+node_modules/next-themes/dist/index.d.ts(53,26): error TS2451: Cannot redeclare block-scoped variable 'ThemeProvider'.
+node_modules/next-themes/dist/index.d.ts(53,86): error TS2300: Duplicate identifier 'useTheme'.
+node_modules/react-hook-form/dist/types/form.d.ts(60,13): error TS2300: Duplicate identifier 'UseFormProps'.
+node_modules/react-hook-form/dist/types/form.d.ts(672,13): error TS2300: Duplicate identifier 'UseFormReturn'.
+node_modules/react-router-dom/dist/index.d.ts(1,69): error TS2307: Cannot find module 'react-router/dom' or its corresponding type declarations.
+  There are types at '/home/joy/Documents/Nano Computing ICT Solutions Website/nano-computing-website/node_modules/react-router/dist/development/dom-export.d.mts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/react-router/dist/development/routeModules-rOzWJJ9x.d.ts(1606,32): error TS2344: Type 'RouteObject' does not satisfy the constraint 'AgnosticRouteObject'.
+  Type 'IndexRouteObject' is not assignable to type 'AgnosticRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Type 'IndexRouteObject' is not assignable to type 'AgnosticIndexRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+      Type 'IndexRouteObject' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+        Types of property 'caseSensitive' are incompatible.
+          Type 'boolean | undefined' is not assignable to type 'boolean'.
+            Type 'undefined' is not assignable to type 'boolean'.
+node_modules/react-router/dist/development/routeModules-rOzWJJ9x.d.ts(1626,32): error TS2344: Type 'RouteObject' does not satisfy the constraint 'AgnosticRouteObject'.
+  Type 'IndexRouteObject' is not assignable to type 'AgnosticRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Type 'IndexRouteObject' is not assignable to type 'AgnosticIndexRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+      Type 'IndexRouteObject' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+        Types of property 'caseSensitive' are incompatible.
+          Type 'boolean | undefined' is not assignable to type 'boolean'.
+            Type 'undefined' is not assignable to type 'boolean'.
+node_modules/react-router/dist/development/routeModules-rOzWJJ9x.d.ts(1633,144): error TS2344: Type 'RouteObjectType' does not satisfy the constraint 'AgnosticRouteObject'.
+  Type 'RouteObject' is not assignable to type 'AgnosticRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Type 'IndexRouteObject' is not assignable to type 'AgnosticRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+      Type 'IndexRouteObject' is not assignable to type 'AgnosticIndexRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+        Type 'IndexRouteObject' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+          Types of property 'caseSensitive' are incompatible.
+            Type 'boolean | undefined' is not assignable to type 'boolean'.
+              Type 'undefined' is not assignable to type 'boolean'.
+                Type 'RouteObjectType' is not assignable to type 'AgnosticNonIndexRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+                  Type 'RouteObject' is not assignable to type 'AgnosticNonIndexRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+                    Type 'IndexRouteObject' is not assignable to type 'AgnosticNonIndexRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+                      Type 'IndexRouteObject' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+                        Types of property 'caseSensitive' are incompatible.
+                          Type 'boolean | undefined' is not assignable to type 'boolean'.
+                            Type 'undefined' is not assignable to type 'boolean'.
+                              Type 'RouteObjectType' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+                                Type 'RouteObject' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+                                  Type 'IndexRouteObject' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+                                    Types of property 'caseSensitive' are incompatible.
+                                      Type 'boolean | undefined' is not assignable to type 'boolean'.
+                                        Type 'undefined' is not assignable to type 'boolean'.
+node_modules/react-router/dist/development/routeModules-rOzWJJ9x.d.ts(1637,88): error TS2344: Type 'RouteObject' does not satisfy the constraint 'AgnosticRouteObject'.
+  Type 'IndexRouteObject' is not assignable to type 'AgnosticRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Type 'IndexRouteObject' is not assignable to type 'AgnosticIndexRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+      Type 'IndexRouteObject' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+        Types of property 'caseSensitive' are incompatible.
+          Type 'boolean | undefined' is not assignable to type 'boolean'.
+            Type 'undefined' is not assignable to type 'boolean'.
+node_modules/react-router/dist/development/routeModules-rOzWJJ9x.d.ts(1638,80): error TS2344: Type 'RouteObject' does not satisfy the constraint 'AgnosticRouteObject'.
+  Type 'IndexRouteObject' is not assignable to type 'AgnosticRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Type 'IndexRouteObject' is not assignable to type 'AgnosticIndexRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+      Type 'IndexRouteObject' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+        Types of property 'caseSensitive' are incompatible.
+          Type 'boolean | undefined' is not assignable to type 'boolean'.
+            Type 'undefined' is not assignable to type 'boolean'.
+node_modules/react-router/dist/development/routeModules-rOzWJJ9x.d.ts(1991,30): error TS2344: Type 'NonIndexRouteObject' does not satisfy the constraint 'AgnosticRouteObject'.
+  Type 'NonIndexRouteObject' is not assignable to type 'AgnosticNonIndexRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Type 'NonIndexRouteObject' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+      Types of property 'caseSensitive' are incompatible.
+        Type 'boolean | undefined' is not assignable to type 'boolean'.
+          Type 'undefined' is not assignable to type 'boolean'.
+node_modules/react-router/dist/development/routeModules-rOzWJJ9x.d.ts(2078,30): error TS2344: Type 'IndexRouteObject' does not satisfy the constraint 'AgnosticRouteObject'.
+  Type 'IndexRouteObject' is not assignable to type 'AgnosticIndexRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Type 'IndexRouteObject' is not assignable to type 'AgnosticBaseRouteObject' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+      Types of property 'caseSensitive' are incompatible.
+        Type 'boolean | undefined' is not assignable to type 'boolean'.
+          Type 'undefined' is not assignable to type 'boolean'.
+node_modules/recharts/types/chart/generateCategoricalChart.d.ts(2,36): error TS7016: Could not find a declaration file for module 'lodash'. '/home/joy/Documents/Nano Computing ICT Solutions Website/nano-computing-website/node_modules/lodash/lodash.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/lodash` if it exists or add a new declaration (.d.ts) file containing `declare module 'lodash';`
+node_modules/tailwind-merge/dist/types.d.ts(2629,103): error TS2300: Duplicate identifier 'twMerge'.
+src/components/common/ChatBot.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/components/common/ChatBot.tsx(2,24): error TS2307: Cannot find module './ui/button' or its corresponding type declarations.
+src/components/common/ChatBot.tsx(3,23): error TS2307: Cannot find module './ui/input' or its corresponding type declarations.
+src/components/common/ChatBot.tsx(4,23): error TS2307: Cannot find module './ui/badge' or its corresponding type declarations.
+src/components/common/ChatBot.tsx(11,3): error TS6133: 'Calendar' is declared but its value is never read.
+src/components/common/ChatBot.tsx(12,3): error TS6133: 'ArrowRight' is declared but its value is never read.
+src/components/common/ChatBot.tsx(13,3): error TS6133: 'Clock' is declared but its value is never read.
+src/components/common/ChatBot.tsx(90,11): error TS2375: Type '{ id: string; type: "user" | "bot"; content: string; timestamp: Date; options: string[] | undefined; }' is not assignable to type 'Message' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'options' are incompatible.
+    Type 'string[] | undefined' is not assignable to type 'string[]'.
+      Type 'undefined' is not assignable to type 'string[]'.
+src/components/common/ChatBot.tsx(323,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/components/forms/ContactForm.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/forms/ContactForm.tsx(69,6): error TS2739: Type '{ children: Element; register: any; handleSubmit: any; watch: any; formState: any; reset: any; setError: any; clearErrors: any; setValue: any; getValues: any; trigger: any; control: any; }' is missing the following properties from type 'UseFormReturn<FieldValues, any, FieldValues>': getFieldState, resetField, unregister, setFocus, subscribe
+src/components/pages/About/AboutPage.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/About/sections/AboutFounderSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/About/sections/ClientLogosSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/About/sections/TeamSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/About/sections/ValuesSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Blog/BlogPage.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Blog/BlogPage.tsx(13,34): error TS6133: 'onPageChange' is declared but its value is never read.
+src/components/pages/Blog/sections/ArticlesGridSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Blog/sections/CategoryFilterSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Blog/sections/FeaturedInsightsSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Blog/sections/NewsletterSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Contact/sections/ContactFormSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Contact/sections/ContactInfoSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Home/sections/CTASection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Home/sections/FounderMessageSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Home/sections/HeroSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Home/sections/PartnersSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Home/sections/ServicesCarouselSection.tsx(177,39): error TS6133: 'index' is declared but its value is never read.
+src/components/pages/ProductDetail/sections/ProductInfoSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/ProductDetail/sections/TechnicalSpecsSection.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Services/ServicesPage.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/pages/Shop/ShopPage.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/components/sections/ExitIntentModal.tsx(2,23): error TS2307: Cannot find module './ui/modal' or its corresponding type declarations.
+src/components/sections/ExitIntentModal.tsx(3,24): error TS2307: Cannot find module './ui/button' or its corresponding type declarations.
+src/components/sections/ExitIntentModal.tsx(4,23): error TS2307: Cannot find module './ui/input' or its corresponding type declarations.
+src/components/sections/ExitIntentModal.tsx(5,23): error TS2307: Cannot find module './ui/badge' or its corresponding type declarations.
+src/components/sections/ExitIntentModal.tsx(201,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/components/ui/context-menu.tsx(94,4): error TS2375: Type '{ children: (ReactNode | Element)[]; key?: Key | null | undefined; id?: string | undefined; color?: string | undefined; content?: string | undefined; translate?: "yes" | ... 1 more ... | undefined; ... 278 more ...; checked: CheckedState | undefined; }' is not assignable to type 'ContextMenuCheckboxItemProps' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'checked' are incompatible.
+    Type 'CheckedState | undefined' is not assignable to type 'CheckedState'.
+      Type 'undefined' is not assignable to type 'CheckedState'.
+src/components/ui/dropdown-menu.tsx(96,4): error TS2375: Type '{ children: (ReactNode | Element)[]; key?: Key | null | undefined; id?: string | undefined; color?: string | undefined; content?: string | undefined; translate?: "yes" | ... 1 more ... | undefined; ... 278 more ...; checked: CheckedState | undefined; }' is not assignable to type 'DropdownMenuCheckboxItemProps' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'checked' are incompatible.
+    Type 'CheckedState | undefined' is not assignable to type 'CheckedState'.
+      Type 'undefined' is not assignable to type 'CheckedState'.
+src/components/ui/floating-label-input.tsx(2,18): error TS6133: 'AnimatePresence' is declared but its value is never read.
+src/components/ui/form-validation.tsx(6,1): error TS6133: 'Button' is declared but its value is never read.
+src/components/ui/form-validation.tsx(171,10): error TS2322: Type '{ type: HTMLInputTypeAttribute; value: string | number | readonly string[] | undefined; onChange: (e: ChangeEvent<HTMLInputElement>) => void; ... 304 more ...; onTransitionStartCapture?: TransitionEventHandler<...> | undefined; }' is not assignable to type 'Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, "ref">'.
+  Types of property '"aria-invalid"' are incompatible.
+    Type 'string | false | null' is not assignable to type 'boolean | "false" | "true" | "grammar" | "spelling" | undefined'.
+      Type 'null' is not assignable to type 'boolean | "false" | "true" | "grammar" | "spelling" | undefined'.
+src/components/ui/form-validation.tsx(310,10): error TS2322: Type '{ value: string | number | readonly string[] | undefined; onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void; onBlur: (e: FocusEvent<HTMLTextAreaElement, Element>) => void; ... 288 more ...; onTransitionStartCapture?: TransitionEventHandler<...> | undefined; }' is not assignable to type 'Omit<DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>, "ref">'.
+  Types of property '"aria-invalid"' are incompatible.
+    Type 'string | false | null' is not assignable to type 'boolean | "false" | "true" | "grammar" | "spelling" | undefined'.
+      Type 'null' is not assignable to type 'boolean | "false" | "true" | "grammar" | "spelling" | undefined'.
+src/components/ui/form-validation.tsx(381,35): error TS2345: Argument of type 'ValidationRule' is not assignable to parameter of type 'string'.
+src/components/ui/form.tsx(106,20): error TS2344: Type 'FC<SlotProps>' does not satisfy the constraint 'keyof IntrinsicElements | ForwardRefExoticComponent<any> | (new (props: any, context: any) => Component<any, {}, any>) | ((props: any) => ReactNode)'.
+  Property '$$typeof' is missing in type 'FunctionComponent<SlotProps>' but required in type 'ForwardRefExoticComponent<any>'.
+src/components/ui/form.tsx(113,7): error TS2322: Type '{ children?: ReactNode; defaultChecked?: boolean | undefined; defaultValue?: string | number | readonly string[] | undefined; suppressContentEditableWarning?: boolean | undefined; ... 274 more ...; ref: ForwardedRef<...>; }' is not assignable to type 'IntrinsicAttributes & SlotProps'.
+  Property 'ref' does not exist on type 'IntrinsicAttributes & SlotProps'.
+src/components/ui/input-otp.tsx(36,11): error TS2339: Property 'char' does not exist on type 'SlotProps | undefined'.
+src/components/ui/input-otp.tsx(36,17): error TS2339: Property 'hasFakeCaret' does not exist on type 'SlotProps | undefined'.
+src/components/ui/input-otp.tsx(36,31): error TS2339: Property 'isActive' does not exist on type 'SlotProps | undefined'.
+src/components/ui/menubar.tsx(135,4): error TS2375: Type '{ children: (ReactNode | Element)[]; key?: Key | null | undefined; id?: string | undefined; color?: string | undefined; content?: string | undefined; translate?: "yes" | ... 1 more ... | undefined; ... 278 more ...; checked: CheckedState | undefined; }' is not assignable to type 'MenubarCheckboxItemProps' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'checked' are incompatible.
+    Type 'CheckedState | undefined' is not assignable to type 'CheckedState'.
+      Type 'undefined' is not assignable to type 'CheckedState'.
+src/components/ui/scroll-reveal.tsx(37,13): error TS18048: 'entry' is possibly 'undefined'.
+src/components/ui/scroll-reveal.tsx(70,7): error TS2322: Type '{ hidden: object; visible: object; }' is not assignable to type 'Variants'.
+  Property 'hidden' is incompatible with index signature.
+    Type 'object' is not assignable to type 'Variant'.
+src/components/ui/scroll-reveal.tsx(71,7): error TS2375: Type '{ duration: number; ease: "easeOut"; staggerChildren: number | undefined; delayChildren: number; }' is not assignable to type 'Transition<any>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Type '{ duration: number; ease: "easeOut"; staggerChildren: number | undefined; delayChildren: number; }' is not assignable to type 'TransitionWithValueOverrides<any>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Type '{ duration: number; ease: "easeOut"; staggerChildren: number | undefined; delayChildren: number; }' is not assignable to type 'ValueAnimationTransition<any>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+      Types of property 'staggerChildren' are incompatible.
+        Type 'number | undefined' is not assignable to type 'number'.
+          Type 'undefined' is not assignable to type 'number'.
+src/components/ui/scroll-reveal.tsx(89,6): error TS2375: Type '{ children: ReactNode; className: string | undefined; staggerChildren: number; }' is not assignable to type 'ScrollRevealProps' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'className' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+src/components/ui/scroll-reveal.tsx(108,39): error TS2322: Type '{ hidden: { opacity: number; x: number; }; visible: { opacity: number; x: number; transition: { duration: number; ease: string; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '{ opacity: number; x: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; x: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; x: number; transition: { duration: number; ease: string; }; }' is not assignable to type '{ transition?: Transition<any>; transitionEnd?: ResolvedValues; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: string; }' is not assignable to type 'Transition<any>'.
+              Type '{ duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'string' is not assignable to type 'Easing | Easing[]'.
+src/components/utils/AnimatedCounter.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/components/utils/AnimatedCounter.tsx(28,13): error TS7030: Not all code paths return a value.
+src/components/utils/TypewriterText.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/components/utils/TypewriterText.tsx(25,24): error TS18048: 'currentFullText' is possibly 'undefined'.
+src/components/utils/TypewriterText.tsx(32,24): error TS18048: 'currentFullText' is possibly 'undefined'.
+src/components/utils/VirtualList.tsx(2,34): error TS2307: Cannot find module '../hooks/useVirtualScroll' or its corresponding type declarations.
+src/components/utils/VirtualList.tsx(30,30): error TS7031: Binding element 'index' implicitly has an 'any' type.
+src/components/utils/VirtualList.tsx(30,37): error TS7031: Binding element 'item' implicitly has an 'any' type.
+src/components/utils/VirtualList.tsx(30,43): error TS7031: Binding element 'style' implicitly has an 'any' type.
+src/constants/products.ts(5,3): error TS6133: 'HardDrive' is declared but its value is never read.
+src/constants/products.ts(6,3): error TS6133: 'Wifi' is declared but its value is never read.
+src/constants/products.ts(7,3): error TS6133: 'Mouse' is declared but its value is never read.
+src/constants/products.ts(8,3): error TS6133: 'Server' is declared but its value is never read.
+src/constants/products.ts(9,3): error TS6133: 'Battery' is declared but its value is never read.
+src/constants/products.ts(10,3): error TS6133: 'Cable' is declared but its value is never read.
+src/constants/products.ts(11,3): error TS6133: 'Video' is declared but its value is never read.
+src/constants/products.ts(12,3): error TS6133: 'Lock' is declared but its value is never read.
+src/constants/products.ts(13,3): error TS6133: 'Cpu' is declared but its value is never read.
+src/constants/products.ts(14,3): error TS6133: 'Globe' is declared but its value is never read.
+src/constants/products.ts(15,3): error TS6133: 'Smartphone' is declared but its value is never read.
+src/hooks/use-toast.ts(185,45): error TS2345: Argument of type '{ type: "DISMISS_TOAST"; toastId: string | undefined; }' is not assignable to parameter of type 'Action'.
+  Type '{ type: "DISMISS_TOAST"; toastId: string | undefined; }' is not assignable to type '{ type: "DISMISS_TOAST"; toastId?: string; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Types of property 'toastId' are incompatible.
+      Type 'string | undefined' is not assignable to type 'string'.
+        Type 'undefined' is not assignable to type 'string'.
+src/hooks/usePerformance.ts(27,22): error TS2554: Expected 1 arguments, but got 0.
+src/types/global.d.ts(5,1): error TS6200: Definitions of the following identifiers conflict with those in another file: LucideIcon, ArrowRight, ArrowLeft, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Star, CheckCircle, X, Menu, Sun, Moon, Eye, Mail, Phone, MapPin, Clock, Calendar, User, Users, Settings, Search, Filter, Download, Upload, Edit, Trash, Plus, Minus, Home, Server, ShoppingCart, BookOpen, Info, Shield, Database, Globe2, Lightbulb, Monitor, Sparkles
+src/types/global.d.ts(83,3): error TS2667: Imports are not permitted in module augmentations. Consider moving them to the enclosing external module.
+src/types/global.d.ts(83,32): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/types/global.d.ts(143,20): error TS2300: Duplicate identifier 'VariantProps'.
+src/types/global.d.ts(147,19): error TS2451: Cannot redeclare block-scoped variable 'cva'.
+src/types/global.d.ts(159,15): error TS2300: Duplicate identifier 'ClassValue'.
+src/types/global.d.ts(167,20): error TS2300: Duplicate identifier 'ClassDictionary'.
+src/types/global.d.ts(170,20): error TS2300: Duplicate identifier 'ClassArray'.
+src/types/global.d.ts(173,3): error TS2666: Exports and export assignments are not permitted in module augmentations.
+src/types/global.d.ts(178,19): error TS2300: Duplicate identifier 'twMerge'.
+src/types/global.d.ts(183,20): error TS2300: Duplicate identifier 'UseFormProps'.
+src/types/global.d.ts(196,20): error TS2300: Duplicate identifier 'UseFormReturn'.
+src/types/global.d.ts(217,5): error TS2717: Subsequent property declarations must have the same type.  Property 'attribute' must be of type 'Attribute | Attribute[] | undefined', but here has type 'string | undefined'.
+src/types/global.d.ts(236,16): error TS2451: Cannot redeclare block-scoped variable 'ThemeProvider'.
+src/types/global.d.ts(237,19): error TS2300: Duplicate identifier 'useTheme'.
+src/types/global.d.ts(246,16): error TS2451: Cannot redeclare block-scoped variable 'Slot'.
+src/utils/type-guards.ts(18,3): error TS6133: 'NotificationType' is declared but its value is never read.

@@ -141,7 +141,12 @@ export interface PayrollSummary {
 
 export interface ActivityLog {
   readonly id: string;
-  readonly type: 'ticket_created' | 'ticket_approved' | 'ticket_rejected' | 'employee_added' | 'employee_updated';
+  readonly type:
+    | 'ticket_created'
+    | 'ticket_approved'
+    | 'ticket_rejected'
+    | 'employee_added'
+    | 'employee_updated';
   readonly description: string;
   readonly performedBy: string;
   readonly performedAt: Date;
@@ -213,18 +218,18 @@ export const DEMO_CREDENTIALS: DemoCredentials[] = [
     role: 'employee',
     email: 'john.doe@nano.com',
     password: 'employee123',
-    description: 'Regular employee - can view own tickets and create new ones'
+    description: 'Regular employee - can view own tickets and create new ones',
   },
   {
     role: 'manager',
     email: 'sarah.manager@nano.com',
     password: 'manager123',
-    description: 'Department manager - can approve/reject team tickets and view reports'
+    description: 'Department manager - can approve/reject team tickets and view reports',
   },
   {
     role: 'admin',
     email: 'admin.system@nano.com',
     password: 'admin123',
-    description: 'System administrator - full access to all features and data'
-  }
+    description: 'System administrator - full access to all features and data',
+  },
 ];

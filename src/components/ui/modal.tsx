@@ -21,7 +21,7 @@ export function Modal({
   size = 'md',
   showCloseButton = true,
   closeOnOverlayClick = true,
-  className = ''
+  className = '',
 }: ModalProps) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -44,7 +44,7 @@ export function Modal({
     sm: 'max-w-md',
     md: 'max-w-lg',
     lg: 'max-w-2xl',
-    xl: 'max-w-4xl'
+    xl: 'max-w-4xl',
   };
 
   if (!isVisible) return null;
@@ -83,9 +83,7 @@ export function Modal({
         )}
 
         {/* Content */}
-        <div className="p-6">
-          {children}
-        </div>
+        <div className="p-6">{children}</div>
       </div>
     </div>
   );

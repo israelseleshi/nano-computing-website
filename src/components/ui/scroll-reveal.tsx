@@ -20,12 +20,12 @@ export function ScrollReveal({
   className,
   variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   },
   staggerChildren,
   delay = 0,
   threshold = 0.2,
-  triggerOnce = true
+  triggerOnce = true,
 }: ScrollRevealProps) {
   const controls = useAnimation();
   const ref = useRef<HTMLDivElement>(null);
@@ -58,7 +58,7 @@ export function ScrollReveal({
 
   const transition = {
     staggerChildren,
-    delayChildren: delay
+    delayChildren: delay,
   };
 
   return (
@@ -76,14 +76,14 @@ export function ScrollReveal({
 }
 
 // Specific variant for list items
-export const StaggeredList = ({ 
-  children, 
-  className, 
-  stagger = 0.1 
-}: { 
-  children: React.ReactNode, 
-  className?: string, 
-  stagger?: number
+export const StaggeredList = ({
+  children,
+  className,
+  stagger = 0.1,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  stagger?: number;
 }) => {
   return (
     <ScrollReveal className={className} staggerChildren={stagger}>
@@ -92,16 +92,16 @@ export const StaggeredList = ({
   );
 };
 
-export const StaggeredListItem = ({ 
-  children, 
-  className 
-}: { 
-  children: React.ReactNode, 
-  className?: string 
+export const StaggeredListItem = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
 }) => {
   const itemVariants = {
     hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "circOut" } }
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'circOut' } },
   };
 
   return (
@@ -110,4 +110,3 @@ export const StaggeredListItem = ({
     </motion.div>
   );
 };
-

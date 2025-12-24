@@ -9,33 +9,28 @@ interface LoadingSpinnerProps {
   className?: string;
 }
 
-export function LoadingSpinner({ 
-  size = 'md', 
+export function LoadingSpinner({
+  size = 'md',
   variant = 'default',
-  className 
+  className,
 }: LoadingSpinnerProps) {
   const sizeClasses = {
     xs: 'w-3 h-3',
     sm: 'w-4 h-4',
     md: 'w-6 h-6',
     lg: 'w-8 h-8',
-    xl: 'w-12 h-12'
+    xl: 'w-12 h-12',
   };
 
   const variantClasses = {
     default: 'text-primary',
     luxury: 'text-gradient',
-    minimal: 'text-muted-foreground'
+    minimal: 'text-muted-foreground',
   };
 
   return (
-    <Loader2 
-      className={cn(
-        'animate-spin',
-        sizeClasses[size],
-        variantClasses[variant],
-        className
-      )}
+    <Loader2
+      className={cn('animate-spin', sizeClasses[size], variantClasses[variant], className)}
     />
   );
 }
@@ -47,17 +42,17 @@ interface LoadingSkeletonProps {
   lines?: number;
 }
 
-export function LoadingSkeleton({ 
-  className, 
+export function LoadingSkeleton({
+  className,
   variant = 'default',
-  lines = 1 
+  lines = 1,
 }: LoadingSkeletonProps) {
   const variantClasses = {
     default: 'h-4 bg-muted rounded',
     card: 'h-32 bg-muted rounded-lg',
     text: 'h-4 bg-muted rounded',
     avatar: 'h-12 w-12 bg-muted rounded-full',
-    button: 'h-10 bg-muted rounded-lg'
+    button: 'h-10 bg-muted rounded-lg',
   };
 
   if (lines > 1) {
@@ -78,15 +73,7 @@ export function LoadingSkeleton({
     );
   }
 
-  return (
-    <div
-      className={cn(
-        'loading-skeleton',
-        variantClasses[variant],
-        className
-      )}
-    />
-  );
+  return <div className={cn('loading-skeleton', variantClasses[variant], className)} />;
 }
 
 // Loading Dots Component
@@ -99,7 +86,7 @@ export function LoadingDots({ size = 'md', className }: LoadingDotsProps) {
   const sizeClasses = {
     sm: 'w-1 h-1',
     md: 'w-2 h-2',
-    lg: 'w-3 h-3'
+    lg: 'w-3 h-3',
   };
 
   return (
@@ -107,13 +94,10 @@ export function LoadingDots({ size = 'md', className }: LoadingDotsProps) {
       {[0, 1, 2].map((i) => (
         <div
           key={i}
-          className={cn(
-            'bg-primary rounded-full animate-pulse',
-            sizeClasses[size]
-          )}
+          className={cn('bg-primary rounded-full animate-pulse', sizeClasses[size])}
           style={{
             animationDelay: `${i * 0.2}s`,
-            animationDuration: '1s'
+            animationDuration: '1s',
           }}
         />
       ))}
@@ -130,12 +114,12 @@ interface LoadingOverlayProps {
   className?: string;
 }
 
-export function LoadingOverlay({ 
-  isLoading, 
-  children, 
+export function LoadingOverlay({
+  isLoading,
+  children,
   message = 'Loading...',
   variant = 'default',
-  className 
+  className,
 }: LoadingOverlayProps) {
   return (
     <div className={cn('relative', className)}>
@@ -168,13 +152,13 @@ interface LoadingButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: 'xs' | 'sm' | 'default' | 'lg' | 'xl';
 }
 
-export function LoadingButton({ 
+export function LoadingButton({
   isLoading = false,
   loadingText = 'Loading...',
   children,
   disabled,
   className,
-  ...props 
+  ...props
 }: LoadingButtonProps) {
   return (
     <button
@@ -198,11 +182,7 @@ interface LoadingCardProps {
   lines?: number;
 }
 
-export function LoadingCard({ 
-  className, 
-  showAvatar = false, 
-  lines = 3 
-}: LoadingCardProps) {
+export function LoadingCard({ className, showAvatar = false, lines = 3 }: LoadingCardProps) {
   return (
     <div className={cn('card-base p-6 space-y-4', className)}>
       {showAvatar && (
@@ -227,17 +207,17 @@ interface LoadingGridProps {
   className?: string;
 }
 
-export function LoadingGrid({ 
-  items = 6, 
-  columns = 3, 
+export function LoadingGrid({
+  items = 6,
+  columns = 3,
   showAvatar = false,
-  className 
+  className,
 }: LoadingGridProps) {
   const gridClasses = {
     1: 'grid-cols-1',
     2: 'grid-cols-1 md:grid-cols-2',
     3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-    4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+    4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
   };
 
   return (
@@ -257,15 +237,15 @@ interface LoadingProgressProps {
   variant?: 'default' | 'luxury';
 }
 
-export function LoadingProgress({ 
-  progress = 0, 
+export function LoadingProgress({
+  progress = 0,
   className,
   showPercentage = false,
-  variant = 'default'
+  variant = 'default',
 }: LoadingProgressProps) {
   const variantClasses = {
     default: 'bg-primary',
-    luxury: 'bg-gradient-to-r from-primary to-accent'
+    luxury: 'bg-gradient-to-r from-primary to-accent',
   };
 
   return (
@@ -278,10 +258,7 @@ export function LoadingProgress({
       )}
       <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
         <div
-          className={cn(
-            'h-full transition-all duration-slow ease-out',
-            variantClasses[variant]
-          )}
+          className={cn('h-full transition-all duration-slow ease-out', variantClasses[variant])}
           style={{ width: `${Math.min(100, Math.max(0, progress))}%` }}
         />
       </div>
@@ -295,14 +272,14 @@ export function useLoadingState(initialState = false) {
 
   const startLoading = React.useCallback(() => setIsLoading(true), []);
   const stopLoading = React.useCallback(() => setIsLoading(false), []);
-  const toggleLoading = React.useCallback(() => setIsLoading(prev => !prev), []);
+  const toggleLoading = React.useCallback(() => setIsLoading((prev) => !prev), []);
 
   return {
     isLoading,
     startLoading,
     stopLoading,
     toggleLoading,
-    setIsLoading
+    setIsLoading,
   };
 }
 
@@ -315,5 +292,5 @@ export {
   LoadingButton as ButtonLoading,
   LoadingCard as CardLoading,
   LoadingGrid as GridLoading,
-  LoadingProgress as Progress
+  LoadingProgress as Progress,
 };
