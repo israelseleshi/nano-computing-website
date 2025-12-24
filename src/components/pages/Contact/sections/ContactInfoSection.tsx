@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
@@ -36,7 +35,7 @@ export const ContactInfoSection = () => {
           transition={{ duration: 0.3 }}
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.547144869856!2d38.7615!3d9.0158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDAnNTYuOSJOIDM4wrA0NSc0MS40IkU!5e0!3m2!1sen!2set!4v1625561234567!5m2!1sen!2set"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d399.9767905175798!2d38.767826177829576!3d9.005344642049488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85b0052a4f3d%3A0x10401dbee19b1be2!2snano%20computing%20ICT%20solution%20CCTV%20Security%20camera%20installation%20In%20Ethiopia%20%2F%20Addis%20Ababa!5e0!3m2!1sen!2set!4v1766561187378!5m2!1sen!2set"
             width="100%"
             height="100%"
             style={{ border: 0 }}
