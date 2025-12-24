@@ -19,6 +19,7 @@ export const FounderMessageSection = () => {
                 src="/dave-pic.png"
                 alt="Dawit Seleshi, Founder and General Manager"
                 className="w-full aspect-[3/4] object-cover rounded-b-[3rem] shadow-2xl shadow-primary/20"
+                priority
               />
             </div>
           </motion.div>
